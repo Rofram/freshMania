@@ -11,10 +11,10 @@ class DeleteProductService:
         try:
             collection_products = self.db['products']
             product = {}
-            for product in collection_products.find({}):
-                if product_id == str(product['_id']):
-                    product['id'] = product['_id']
-                    product['filename'] = product['img']
+            for product_mongo in collection_products.find({}):
+                if product_id == str(product_mongo['_id']):
+                    product['id'] = product_mongo['_id']
+                    product['filename'] = product_mongo['img']
 
             deleted_product = collection_products.delete_one({ "_id": product['id'] })
             
