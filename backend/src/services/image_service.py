@@ -10,8 +10,9 @@ class ImageService:
     
     def save(self, file) -> str:
         try:
-            if self.allowed_file(file.filename):
-                new_filename = str(uuid.uuid4()) + file.filename
+            filename = file.filename
+            if self.allowed_file(filename):
+                new_filename = self.rename_file(filename)
                 file.save(os.path.join(self.uploads_folder, new_filename))
                 return new_filename
             else:
@@ -21,7 +22,14 @@ class ImageService:
             raise Exception()
     
     def allowed_file(self, filename) -> bool:
-        return '.' in filename and filename.rsplit('.', 1)[1].lower() in self.allow_extensions
+        file_extension = filename.rsplit('.', 1)[1].lower()
+        return '.' in filename and file_extension in self.allow_extensions
+    
+    def rename_file(self, filename):
+        file_extension = filename.rsplit('.', 1)[1].lower()
+        new_name = f"{str(uuid.uuid4())}-product.{file_extension}"
+        return new_name
+
     
     def delete(self, filename) -> None:
         try:
