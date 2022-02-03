@@ -20,8 +20,11 @@ class ProductController:
 
             product = self.create_service.execute(name, price, file)
 
-            if product:
-                return product
+            return res(
+                response=json.dumps(product),
+                status=201,
+                mimetype='application/json'
+            )
         except Exception as ex:
             print('ProductControler Create', ex)
             return res(
@@ -36,8 +39,7 @@ class ProductController:
         try:
             products = self.list_service.execute()
 
-            if products:
-                return products
+            return products
         except Exception as ex:
             print('ProductController Show', ex)
             return res(
@@ -57,9 +59,9 @@ class ProductController:
 
             product = self.update_service.execute(product_id, name, price, file)
 
-            if product:
-                return product
+            return product
         except Exception as ex:
+            print('ProductController Update', ex)
             return res(
                 response=json.dumps({
                     "error": "product not found"
