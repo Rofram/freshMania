@@ -16,27 +16,31 @@ class UpdateProductService:
                     product['id'] = element['_id']
                     product['filename'] = element['img']
             
-            filename = self.image_service.save(file)
+            if name and price and file:
+                filename = self.image_service.save(file)
 
-            my_query = {
-                "_id": product['id']
-            }
-
-            new_values = {
-                "$set": {
-                    "name": name,
-                    "price": price,
-                    "img": filename
+                my_query = {
+                    "_id": product['id']
                 }
-            }
 
-            updated_element = collection_products.update_one(my_query, new_values)
+                new_values = {
+                    "$set": {
+                        "name": name,
+                        "price": price,
+                        "img": filename
+                    }
+                }
 
-            if updated_element.matched_count > 0:
-                self.image_service.delete(product['filename'])
-                return new_values
+                updated_element = collection_products.update_one(my_query, new_values)
+
+                if updated_element.matched_count > 0:
+                    self.image_service.delete(product['filename'])
+                    return new_values
+                else:
+                    self.image_service.delete(filename)
+                    raise Exception('element not found')
             else:
-                raise Exception('element not found')
+                raise Exception("missing props")
         except Exception as ex:
             print('UpdateProductService', ex)
             raise Exception()
