@@ -9,6 +9,7 @@
 <p align="center" style="font-size: 50px"><b>DevMarket</b> é um sistema para você gerenciar seus produtos preferidos. Desenvolvido com: <b>NEXTJS</b>; <b>FLASK</b>; <b>MONGODB</b>.</p>
 <br>
 
+---
 
 <p align="center">
 
