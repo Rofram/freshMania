@@ -4,18 +4,19 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
   font-size: 2rem;
+  font-weight: 600;
+  margin: 8rem auto;
 
   svg {
-    margin-right: 8px;
+    margin-right: 0.4rem;
   }
 
   h1 {
     color: #28262e;
 
     strong {
-      color: #084887;
+      color: #4a63e5;
     }
   }
 `
