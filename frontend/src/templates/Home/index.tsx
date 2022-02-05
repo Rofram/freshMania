@@ -40,6 +40,7 @@ const Home = ({ products }: HomeTemplateProps) => {
 
   function handleResetForm() {
     setPreviewImage('')
+    formRef.current?.setErrors({})
   }
 
   async function handleSubmit(data: RegisterProductFormData) {
@@ -97,7 +98,6 @@ const Home = ({ products }: HomeTemplateProps) => {
             handleResetForm={handleResetForm}
             imageChange={handleSelectImages}
             previewImage={previewImage}
-            submitButtonLabel="Cadastrar"
           />
         </Form>
         <Styled.Section>
