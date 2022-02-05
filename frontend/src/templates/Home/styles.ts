@@ -16,7 +16,7 @@ export const Section = styled.section`
   margin-top: 8rem;
   margin-bottom: 8rem;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row-reverse wrap-reverse;
   gap: 5rem;
   justify-content: center;
   align-items: center;
