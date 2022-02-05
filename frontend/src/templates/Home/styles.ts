@@ -4,8 +4,8 @@ export const Wrapper = styled.main`
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 
   display: flex;
   flex-direction: column;
