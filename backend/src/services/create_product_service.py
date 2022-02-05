@@ -12,7 +12,7 @@ class CreateProductService:
             filename = self.image_service.save(file)
             product = {
                 "name": name,
-                "price": price,
+                "price": float(price),
                 "img": filename
             }
             product_collection = collection_products.insert_one(product)
@@ -20,7 +20,7 @@ class CreateProductService:
             return {
                 "id": str(product_collection.inserted_id),
                 "name": name,
-                "price": price,
+                "price": float(price),
                 "img": filename
             }
         except Exception as ex:
