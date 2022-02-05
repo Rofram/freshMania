@@ -13,6 +13,7 @@ export const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  z-index: 10;
 
   img {
     border-radius: 20px 20px 0 0;
