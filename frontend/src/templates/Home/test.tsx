@@ -2,6 +2,8 @@ import { render, screen } from '@testing-library/react'
 
 import Home from '.'
 
+import mock from './mock'
+
 jest.mock('components/Header', () => {
   return {
     __esModule: true,
@@ -13,7 +15,7 @@ jest.mock('components/Header', () => {
 
 describe('<Home />', () => {
   it('should render the heading', () => {
-    render(<Home />)
+    render(<Home {...mock} />)
 
     expect(screen.getByTestId('Header')).toBeInTheDocument()
   })
